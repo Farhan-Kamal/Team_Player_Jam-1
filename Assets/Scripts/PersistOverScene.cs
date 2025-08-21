@@ -28,5 +28,9 @@ public class PersistOverScene : MonoBehaviour
             objectList.Add(gameObject);
             DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
