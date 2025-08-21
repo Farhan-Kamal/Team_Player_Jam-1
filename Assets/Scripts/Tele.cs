@@ -35,43 +35,48 @@ public class Tele : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("p1") || collision.gameObject.CompareTag("p2"))
             {
-                Scene newLoadScene = SceneManager.GetSceneByName(newSceneName);
-
-                bool isSceneLoaded = false;
-
-                for (int i = 0; i < SceneManager.sceneCount; i++)
-                {
-                    if (SceneManager.GetSceneAt(i) == newLoadScene)
-                    {
-                        isSceneLoaded = true;
-                    }
-                }
-
-                if (collision.gameObject.CompareTag("p1"))
-                {
-                    if (newLoadScene == scene_p2)
-                    {
-                        StartCoroutine(UnloadLater(scene_p1));
-                    }
-                    scene_p1 = newLoadScene;
-                }
-                else
-                {
-                    if (newLoadScene == scene_p1)
-                    {
-                        StartCoroutine(UnloadLater(scene_p2));
-                    }
-                    scene_p2 = newLoadScene;
-                }
-
-                if (!isSceneLoaded)
-                {
-                    SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive);
-                }
-
-                collision.gameObject.transform.position = finalPos;
+                Teleport(newSceneName, finalPos, collision.gameObject);
             }
         }
+    }
+
+    public void Teleport(string sceneName, Vector3 pos, GameObject player)
+    {
+        Scene newLoadScene = SceneManager.GetSceneByName(sceneName);
+
+        bool isSceneLoaded = false;
+
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i) == newLoadScene)
+            {
+                isSceneLoaded = true;
+            }
+        }
+
+        if (player.CompareTag("p1"))
+        {
+            if (newLoadScene == scene_p2)
+            {
+                StartCoroutine(UnloadLater(scene_p1));
+            }
+            scene_p1 = newLoadScene;
+        }
+        else
+        {
+            if (newLoadScene == scene_p1)
+            {
+                StartCoroutine(UnloadLater(scene_p2));
+            }
+            scene_p2 = newLoadScene;
+        }
+
+        if (!isSceneLoaded)
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        }
+
+        player.gameObject.transform.position = pos;
     }
 
     IEnumerator UnloadLater(Scene unloadedScene)
