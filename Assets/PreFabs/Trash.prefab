@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3996500808151136931}
   - component: {fileID: 8736561588232165864}
   m_Layer: 6
-  m_Name: Pickable Object Circle
+  m_Name: Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
