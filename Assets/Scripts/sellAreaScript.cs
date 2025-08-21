@@ -10,19 +10,8 @@ public class sellAreaScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "trash")
         {
-            sellingTrash.Add(collision.gameObject.GetComponent<trashDisplayScript>().trash);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "trash")
-        {
-            SO_Trash checkedTrash = collision.gameObject.GetComponent<trashDisplayScript>().trash;
-
-            if (sellingTrash.Contains(checkedTrash))
-            {
-                sellingTrash.Remove(checkedTrash);
-            }
+            trashManagerScript.instance.collectedTrash.Add(collision.gameObject.GetComponent<trashDisplayScript>().trash);
+            Destroy(collision.gameObject);
         }
     }
 }
