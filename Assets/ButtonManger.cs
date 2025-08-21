@@ -21,6 +21,11 @@ public class ButtonManger : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         combatManager.SendMessage(MessageSent);
+
+        if (combatManager == null)
+        {
+            trashManagerScript.instance.SendMessage("Sell");
+        }
     }
 
     // Start is called before the first frame update

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class trashManagerScript : MonoBehaviour
@@ -13,5 +14,10 @@ public class trashManagerScript : MonoBehaviour
     private void Update()
     {
         instance = this;
+    }
+
+    public void Sell()
+    {
+        List<SO_Trash> soldTrash = GameObject.Find("Seller").GetComponent<sellerScript>().wantedTrashList;
     }
 }
