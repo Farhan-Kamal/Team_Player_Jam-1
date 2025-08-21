@@ -15,6 +15,6 @@ public class cameraScript : MonoBehaviour
     {
         Vector3 followPos = followObject.transform.position;
         followPos = new Vector3(followPos.x, followPos.y, followPos.z - 10);
-        transform.position = followObject.transform.position;
+        transform.position = followPos;
     }
 }
