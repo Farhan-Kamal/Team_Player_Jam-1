@@ -8,6 +8,10 @@ public class PersistOverScene : MonoBehaviour
 
     void Start()
     {
+        if (objectList == null)
+        {
+            objectList = new List<GameObject>();
+        }
         bool shouldSaveObject = true;
         foreach (GameObject obj in objectList)
         {
