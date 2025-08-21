@@ -25,7 +25,7 @@ public class Tele : MonoBehaviour
         {
             Debug.Log(collision.gameObject.CompareTag("p1"));
             if (collision.gameObject.CompareTag("p1")) {
-                SceneManager.LoadScene("Combat");
+                SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
             }
         }
     }
