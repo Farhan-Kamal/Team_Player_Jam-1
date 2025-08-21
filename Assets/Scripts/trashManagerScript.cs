@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class trashManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static trashManagerScript instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public SO_Trash[] trashArray;
 }
