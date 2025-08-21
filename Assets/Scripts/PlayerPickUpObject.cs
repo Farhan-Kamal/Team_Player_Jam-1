@@ -19,12 +19,14 @@ public class PlayerPickUpObject : MonoBehaviour {
     public KeyCode throwKeyBind = KeyCode.L;
 
 
-    private bool _isHoldingObject = false;
+    private bool _isInventoryMax = false;
+    public int inventoryLimit;
     private List<GameObject> _heldObjectList;       // The object currently being held
     private PlayerMovement _playerMovement;
     private Collider2D _objectInRange;    // Object in pickup range
     // Called when the game starts
     private void Start() {
+        _heldObjectList = new List<GameObject>();
         _playerMovement = GetComponentInParent<PlayerMovement>();  
     }
 
@@ -34,16 +36,16 @@ public class PlayerPickUpObject : MonoBehaviour {
         _objectInRange = Physics2D.OverlapCircle(pickupPoint.position, pickupRadius, layerMask);
 
         // Makes the idea sprite turn on/off based on if you can pick up an item
-        spriteRender.enabled = !_isHoldingObject && _objectInRange != null;
+        spriteRender.enabled = !_isInventoryMax && _objectInRange != null;
         
-        if (!_isHoldingObject && _objectInRange != null) {
+        if (!_isInventoryMax && _objectInRange != null) {
             spriteRender.enabled = true;
             // Pick up object when the correct key is pressed
             if (Input.GetKeyDown(grabKeyBind)) {
                 PickUpObjectMethod(_objectInRange);
             }
         }
-        else if (_isHoldingObject) {
+        if (_heldObjectList.Count > 0) {
             // Throw object when the correct key is pressed
             if (Input.GetKeyDown(throwKeyBind)) {
                 ThrowObjectMethod();
@@ -55,25 +57,27 @@ public class PlayerPickUpObject : MonoBehaviour {
     /// Picks up an object
     /// </summary>
     private void PickUpObjectMethod(Collider2D pickUp) {
-        _isHoldingObject = true;
-        _heldObjectList.Add(pickUp.gameObject);
-        
+        GameObject currentHeldObject = pickUp.gameObject;
+        _heldObjectList.Add(currentHeldObject);
+        if(_heldObjectList.Count > inventoryLimit)
+        {
+            _isInventoryMax = true;
+        }
 
         // Disable physics so the object can be carried
-        _heldObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        _heldObject.GetComponent<Collider2D>().enabled = false;
-        _heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        pickUp.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        currentHeldObject.GetComponent<Collider2D>().enabled = false;
+        currentHeldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         // Move object to player's hand
-        _heldObject.transform.position = pickupPoint.position;
-        _heldObject.transform.SetParent(transform);
+        currentHeldObject.transform.SetParent(transform);
     }
 
     /// <summary>
     /// Throws the currently held object
     /// </summary>
     private void ThrowObjectMethod() {
-        _isHoldingObject = false;
+        /*_isHoldingObject = false;
 
         // Re-enable physics
         _heldObject.GetComponent<Collider2D>().enabled = true;
@@ -100,7 +104,7 @@ public class PlayerPickUpObject : MonoBehaviour {
         _heldObject.GetComponent<Rigidbody2D>().velocity = velocity;
 
         // Clear held object reference
-        _heldObject = null;
+        _heldObject = null;*/
     }
 
     // Draw a circle in the editor to show pickup range

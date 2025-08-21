@@ -13,16 +13,20 @@ PrefabInstance:
       value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 60076172758118731, guid: 84971e60595b9494895c558f41ba5623, type: 3}
-      propertyPath: pickupPoint
-      value: 
+      propertyPath: grabKeyBind
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 60076172758118731, guid: 84971e60595b9494895c558f41ba5623, type: 3}
-      propertyPath: spriteRender
-      value: 
+      propertyPath: throwKeyBind
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 362916974928991114, guid: 84971e60595b9494895c558f41ba5623, type: 3}
       propertyPath: m_Name
       value: Player_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 362916974928991114, guid: 84971e60595b9494895c558f41ba5623, type: 3}
+      propertyPath: m_TagString
+      value: p2
       objectReference: {fileID: 0}
     - target: {fileID: 1128257390752875484, guid: 84971e60595b9494895c558f41ba5623, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64,6 +68,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2194035979477757748, guid: 84971e60595b9494895c558f41ba5623, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153096578244259537, guid: 84971e60595b9494895c558f41ba5623, type: 3}
+      propertyPath: isPlayerOne
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8047090666721102000, guid: 84971e60595b9494895c558f41ba5623, type: 3}
       propertyPath: m_Color.b
       value: 0.57254905
@@ -78,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8263517111973652281, guid: 84971e60595b9494895c558f41ba5623, type: 3}
       propertyPath: m_Name
-      value: Player 2 Variant
+      value: Variant Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
