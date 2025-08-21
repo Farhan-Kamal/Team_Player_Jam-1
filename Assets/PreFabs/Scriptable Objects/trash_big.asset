@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc89727b0a35d540be48be1981b15bb, type: 3}
   m_Name: trash_big
   m_EditorClassIdentifier: 
-  trashColor: {r: 0.8679245, g: 0.06277434, b: 0.06277434, a: 1}
-  trashSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  trashColor: {r: 1, g: 1, b: 1, a: 1}
+  trashSprite: {fileID: 21300000, guid: 245daa52d70348d459f9cbb1c6a79829, type: 3}
   gold: 50
   weight: 3
   size: 1.5
