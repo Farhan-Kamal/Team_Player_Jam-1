@@ -10,7 +10,7 @@ public class sellAreaScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "trash")
         {
-            trashManagerScript.instance.collectedTrash.Add(collision.gameObject.GetComponent<trashDisplayScript>().trash);
+            GameObject.Find("TrashManager").GetComponent<trashManagerScript>().collectedTrash.Add(collision.gameObject.GetComponent<trashDisplayScript>().trash);
             Destroy(collision.gameObject);
         }
     }

@@ -11,7 +11,7 @@ public class trashManagerScript : MonoBehaviour
 
     public List<SO_Trash> collectedTrash;
 
-    private void Update()
+    void Update()
     {
         instance = this;
     }

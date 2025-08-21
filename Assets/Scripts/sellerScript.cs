@@ -15,9 +15,10 @@ public class sellerScript : MonoBehaviour
 
     void Start()
     {
+        wantedTrashList = new List<SO_Trash>();
         for (int i = 0; i < wantedTrashInt; i++)
         {
-            wantedTrashList.Add(trashManagerScript.instance.trashArray[Random.Range(0, trashManagerScript.instance.trashArray.Length)]);
+            //wantedTrashList.Add(GameObject.Find("TrashManager").GetComponent<trashManagerScript>().trashArray[Random.Range(0, trashManagerScript.instance.trashArray.Length)]);
         }
     }
 
