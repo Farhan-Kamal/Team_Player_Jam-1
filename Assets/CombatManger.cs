@@ -53,12 +53,12 @@ public class CombatManger : MonoBehaviour
         if (EHeal <= 0)
         {
             Debug.Log("GAME OVER PLAYER WINS");
-            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
+            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1").transform.GetChild(1).gameObject);
         }
         else if (P1Health <= 0)
         {
             Debug.Log("PLAYER LOST");
-            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
+            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1").transform.GetChild(1).gameObject);
         }
     }
 
@@ -80,7 +80,7 @@ public class CombatManger : MonoBehaviour
 
     public void RunS()
     {
-        GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
+        GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1").transform.GetChild(1).gameObject);
     }
 
     public void EnemyTurn()
