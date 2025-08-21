@@ -16,8 +16,6 @@ public class PersistOverScene : MonoBehaviour
         bool shouldSaveObject = true;
         foreach (GameObject obj in objectList)
         {
-            Debug.Log(obj.name);
-            Debug.Log(gameObject.name);
             if (obj.name == gameObject.name)
             {
                 shouldSaveObject = false;

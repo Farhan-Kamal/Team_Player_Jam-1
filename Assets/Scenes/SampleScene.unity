@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSceneName: Selling
+  finalPos: {x: -2.58, y: -21.3, z: 0}
 --- !u!61 &590064121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1322,6 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSceneName: Combat
+  finalPos: {x: 0, y: 0, z: 0}
 --- !u!61 &2103761849
 BoxCollider2D:
   m_ObjectHideFlags: 0
