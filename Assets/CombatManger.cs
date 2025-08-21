@@ -53,12 +53,12 @@ public class CombatManger : MonoBehaviour
         if (EHeal <= 0)
         {
             Debug.Log("GAME OVER PLAYER WINS");
-            SceneManager.LoadScene(SampleScene, LoadSceneMode.Additive);
+            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
         }
         else if (P1Health <= 0)
         {
             Debug.Log("PLAYER LOST");
-            SceneManager.LoadScene(SampleScene, LoadSceneMode.Additive);
+            GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
         }
     }
 
@@ -80,7 +80,7 @@ public class CombatManger : MonoBehaviour
 
     public void RunS()
     {
-        SceneManager.LoadScene(SampleScene, LoadSceneMode.Additive);
+        GetComponent<Tele>().Teleport(SampleScene, Vector3.zero, GameObject.Find("Player 1"));
     }
 
     public void EnemyTurn()
