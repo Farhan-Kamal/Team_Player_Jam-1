@@ -18,13 +18,14 @@ public class Tele : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("I have been Touched.");
         if (collision != null)
         {
             Debug.Log(collision.gameObject.CompareTag("p1"));
-            if (collision.gameObject.CompareTag("p1")) {
+            if (collision.gameObject.CompareTag("p1"))
+            {
                 SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
             }
         }

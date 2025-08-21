@@ -70,41 +70,42 @@ public class PlayerPickUpObject : MonoBehaviour {
         currentHeldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         // Move object to player's hand
-        currentHeldObject.transform.SetParent(transform);
+        currentHeldObject.transform.SetParent(pickupPoint);
     }
 
     /// <summary>
     /// Throws the currently held object
     /// </summary>
     private void ThrowObjectMethod() {
-        /*_isHoldingObject = false;
+        foreach (GameObject _heldObject in _heldObjectList)
+        {
+            // Re-enable physics
+            _heldObject.GetComponent<Collider2D>().enabled = true;
+            _heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-        // Re-enable physics
-        _heldObject.GetComponent<Collider2D>().enabled = true;
-        _heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            // Remove parent
+            _heldObject.transform.SetParent(null);
 
-        // Remove parent
-        _heldObject.transform.SetParent(null);
+            // Calculate throw direction based on player's rotation snapped to 45-degree increments
+            float snappedAngle = Mathf.Round((transform.eulerAngles.z + 90f) / 45f) * 45f;
+            float rad = snappedAngle * Mathf.Deg2Rad;
 
-        // Calculate throw direction based on player's rotation snapped to 45-degree increments
-        float snappedAngle = Mathf.Round((transform.eulerAngles.z + 90f) / 45f) * 45f;
-        float rad = snappedAngle * Mathf.Deg2Rad;
+            Vector2 velocity = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
 
-        Vector2 velocity = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+            // Convert velocity to -1, 0, or 1 for direction only
+            velocity.x = Mathf.Round(velocity.x);
+            velocity.y = Mathf.Round(velocity.y);
 
-        // Convert velocity to -1, 0, or 1 for direction only
-        velocity.x = Mathf.Round(velocity.x);
-        velocity.y = Mathf.Round(velocity.y);
+            // Apply throw force and add player's movement
+            velocity *= throwForce;
+            velocity += _playerMovement.GetVelocity();
 
-        // Apply throw force and add player's movement
-        velocity *= throwForce;
-        velocity += _playerMovement.GetVelocity();
-
-        // Set the object's velocity
-        _heldObject.GetComponent<Rigidbody2D>().velocity = velocity;
+            // Set the object's velocity
+            _heldObject.GetComponent<Rigidbody2D>().velocity = velocity;
+        }
 
         // Clear held object reference
-        _heldObject = null;*/
+        _heldObjectList = new List<GameObject>();
     }
 
     // Draw a circle in the editor to show pickup range
