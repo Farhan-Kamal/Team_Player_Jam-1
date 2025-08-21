@@ -12,16 +12,20 @@ public class PersistOverScene : MonoBehaviour
         {
             objectList = new List<GameObject>();
         }
+
         bool shouldSaveObject = true;
         foreach (GameObject obj in objectList)
         {
-            if (obj.name != gameObject.name)
+            Debug.Log(obj.name);
+            Debug.Log(gameObject.name);
+            if (obj.name == gameObject.name)
             {
                 shouldSaveObject = false;
             }
         }
         if (shouldSaveObject)
         {
+            objectList.Add(gameObject);
             DontDestroyOnLoad(gameObject);
         }
     }
