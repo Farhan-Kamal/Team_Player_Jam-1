@@ -6,11 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Tele : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string newSceneName;
 
     // Update is called once per frame
     void Update()
@@ -20,13 +16,11 @@ public class Tele : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("I have been Touched.");
         if (collision != null)
         {
-            Debug.Log(collision.gameObject.CompareTag("p1"));
-            if (collision.gameObject.CompareTag("p1"))
+            if (collision.gameObject.CompareTag("p1") || collision.gameObject.CompareTag("p2"))
             {
-                SceneManager.LoadScene("Combat", LoadSceneMode.Additive);
+                SceneManager.LoadScene(newSceneName, LoadSceneMode.Additive);
             }
         }
     }
