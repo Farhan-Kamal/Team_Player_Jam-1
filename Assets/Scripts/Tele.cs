@@ -34,7 +34,6 @@ public class Tele : MonoBehaviour
         scene_p2 = SceneManager.GetActiveScene();
         LoadedScene.Clear();
         LoadedScene.Add(SceneManager.GetActiveScene());
-        LoadedScene.Add(SceneManager.GetActiveScene());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,8 +63,6 @@ public class Tele : MonoBehaviour
         }
         Scene newLoadScene = SceneManager.GetSceneByName(sceneName);
 
-        LoadedScene.Add(newLoadScene);
-
         Scene unloadedScene;
 
         if (player.CompareTag("p1"))
@@ -88,6 +85,8 @@ public class Tele : MonoBehaviour
                 StartCoroutine(UnloadLater(unloadedScene));
             }
         }
+
+        LoadedScene.Add(newLoadScene);
     }
 
     IEnumerator UnloadLater(Scene unloadedScene)
