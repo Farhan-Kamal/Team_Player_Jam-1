@@ -15,10 +15,12 @@ public class PlayerPickUpObject : MonoBehaviour {
     public SpriteRenderer spriteRender;  // Shows if the player can pick somehting up
     
     [Header("Player Key Bind")]
-    public KeyCode keyBind = KeyCode.P;
+    public KeyCode grabKeyBind = KeyCode.P;
+    public KeyCode throwKeyBind = KeyCode.L;
+
 
     private bool _isHoldingObject = false;
-    private GameObject _heldObject;       // The object currently being held
+    private List<GameObject> _heldObjectList;       // The object currently being held
     private PlayerMovement _playerMovement;
     private Collider2D _objectInRange;    // Object in pickup range
     // Called when the game starts
@@ -37,13 +39,13 @@ public class PlayerPickUpObject : MonoBehaviour {
         if (!_isHoldingObject && _objectInRange != null) {
             spriteRender.enabled = true;
             // Pick up object when the correct key is pressed
-            if (Input.GetKeyDown(keyBind)) {
+            if (Input.GetKeyDown(grabKeyBind)) {
                 PickUpObjectMethod(_objectInRange);
             }
         }
         else if (_isHoldingObject) {
             // Throw object when the correct key is pressed
-            if (Input.GetKeyDown(keyBind)) {
+            if (Input.GetKeyDown(throwKeyBind)) {
                 ThrowObjectMethod();
             }
         }
@@ -54,7 +56,7 @@ public class PlayerPickUpObject : MonoBehaviour {
     /// </summary>
     private void PickUpObjectMethod(Collider2D pickUp) {
         _isHoldingObject = true;
-        _heldObject = pickUp.gameObject;
+        _heldObjectList.Add(pickUp.gameObject);
         
 
         // Disable physics so the object can be carried
