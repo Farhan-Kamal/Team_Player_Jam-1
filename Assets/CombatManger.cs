@@ -43,4 +43,6 @@ public class CombatManger : MonoBehaviour
         EHealth.value = EHeal;
         EShield.value = EShiel;
     }
+
+    
 }
